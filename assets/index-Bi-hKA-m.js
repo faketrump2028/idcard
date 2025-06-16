@@ -58,7 +58,7 @@ const Generatefront = ({ nameStr, nationStr, addrStr, idStr, headImgUrl }) => {
     const dd = id.slice(12, 14);
     return dd.startsWith("0") ? dd[1] : dd;
   };
-  const baseURL = "/preact/";
+  const baseURL = "/idcard/";
   const headImageSrc = headImgUrl ? headImgUrl : getGenderFromID(idStr) === "男" ? `${baseURL.replace(/\/$/, "")}/id_img_head_man.png` : `${baseURL.replace(/\/$/, "")}/id_img_head_woman.png`;
   y(() => {
     const el = document.querySelector(".generate-text-address");
@@ -118,7 +118,7 @@ const Generatefront = ({ nameStr, nationStr, addrStr, idStr, headImgUrl }) => {
   y(() => {
     const el = document.querySelector(".generate-text-address span");
     if (el) {
-      el.style.backgroundImage = `url("${"/preact/"}noise.png")`;
+      el.style.backgroundImage = `url("${"/idcard/"}noise.png")`;
     }
   }, [addrStr]);
   y(() => {
@@ -189,7 +189,7 @@ const Generatefront = ({ nameStr, nationStr, addrStr, idStr, headImgUrl }) => {
   return /* @__PURE__ */ u$1("div", { children: /* @__PURE__ */ u$1("div", { className: "generate-list-wrapper", children: [
     /* @__PURE__ */ u$1("div", { className: "generator-list", children: [
       /* @__PURE__ */ u$1("div", { className: "generate-text-name", children: /* @__PURE__ */ u$1("p", { style: {
-        backgroundImage: `url("${"/preact/"}noise.png")`,
+        backgroundImage: `url("${"/idcard/"}noise.png")`,
         letterSpacing: nameStr.length === 2 ? "80px" : "2px"
       }, children: nameStr }) }),
       /* @__PURE__ */ u$1("div", { className: "generate-text-gender", children: [
@@ -197,13 +197,13 @@ const Generatefront = ({ nameStr, nationStr, addrStr, idStr, headImgUrl }) => {
           "p",
           {
             style: {
-              backgroundImage: `url("${"/preact/"}noise.png")`
+              backgroundImage: `url("${"/idcard/"}noise.png")`
             },
             children: getGenderFromID(idStr)
           }
         ),
         /* @__PURE__ */ u$1("p", { style: {
-          backgroundImage: `url("${"/preact/"}noise.png")`
+          backgroundImage: `url("${"/idcard/"}noise.png")`
         }, children: nationStr })
       ] }),
       /* @__PURE__ */ u$1("div", { className: "generate-text-born", children: [
@@ -211,7 +211,7 @@ const Generatefront = ({ nameStr, nationStr, addrStr, idStr, headImgUrl }) => {
           "p",
           {
             style: {
-              backgroundImage: `url("${"/preact/"}noise.png")`
+              backgroundImage: `url("${"/idcard/"}noise.png")`
             },
             children: getBirthYear(idStr)
           }
@@ -220,7 +220,7 @@ const Generatefront = ({ nameStr, nationStr, addrStr, idStr, headImgUrl }) => {
           "p",
           {
             style: {
-              backgroundImage: `url("${"/preact/"}noise.png")`
+              backgroundImage: `url("${"/idcard/"}noise.png")`
             },
             children: getBirthMonth(idStr)
           }
@@ -229,7 +229,7 @@ const Generatefront = ({ nameStr, nationStr, addrStr, idStr, headImgUrl }) => {
           "p",
           {
             style: {
-              backgroundImage: `url("${"/preact/"}noise.png")`
+              backgroundImage: `url("${"/idcard/"}noise.png")`
             },
             children: getBirthDay(idStr)
           }
@@ -244,7 +244,7 @@ const Generatefront = ({ nameStr, nationStr, addrStr, idStr, headImgUrl }) => {
             "p",
             {
               style: {
-                backgroundImage: `url("${"/preact/"}noise.png")`
+                backgroundImage: `url("${"/idcard/"}noise.png")`
               },
               children: idStr
             }
@@ -269,7 +269,7 @@ const Generatefront = ({ nameStr, nationStr, addrStr, idStr, headImgUrl }) => {
       {
         className: "generate-bg-img",
         style: {
-          backgroundImage: `url("${"/preact/"}id_img_front.png")`
+          backgroundImage: `url("${"/idcard/"}id_img_front.png")`
         }
       }
     )
@@ -288,7 +288,7 @@ const Generateback = ({ issueStr, startDate, endDate }) => {
         {
           className: "generate-text-office",
           children: /* @__PURE__ */ u$1("p", { style: {
-            backgroundImage: `url("${"/preact/"}noise.png")`
+            backgroundImage: `url("${"/idcard/"}noise.png")`
           }, children: issueStr })
         }
       ),
@@ -298,7 +298,7 @@ const Generateback = ({ issueStr, startDate, endDate }) => {
           {
             className: "generate-text-period-p",
             style: {
-              backgroundImage: `url("${"/preact/"}noise.png")`
+              backgroundImage: `url("${"/idcard/"}noise.png")`
             },
             children: formatDate(startDate)
           }
@@ -308,7 +308,7 @@ const Generateback = ({ issueStr, startDate, endDate }) => {
           {
             className: "generate-text-period-hyphen",
             style: {
-              backgroundImage: `url("${"/preact/"}noise.png")`
+              backgroundImage: `url("${"/idcard/"}noise.png")`
             },
             children: "-"
           }
@@ -318,7 +318,7 @@ const Generateback = ({ issueStr, startDate, endDate }) => {
           {
             className: formatDate(endDate) === "长期" ? "generate-text-period-p-long" : "generate-text-period-p",
             style: {
-              backgroundImage: `url("${"/preact/"}noise.png")`
+              backgroundImage: `url("${"/idcard/"}noise.png")`
             },
             children: formatDate(endDate)
           }
@@ -330,7 +330,7 @@ const Generateback = ({ issueStr, startDate, endDate }) => {
       {
         className: "generate-bg-img-back",
         style: {
-          backgroundImage: `url("${"/preact/"}id_img_back.png")`
+          backgroundImage: `url("${"/idcard/"}id_img_back.png")`
         }
       }
     )
@@ -1286,7 +1286,7 @@ const App = () => {
     };
   }, [isGenerating]);
   y(() => {
-    const baseURL = "/preact/";
+    const baseURL = "/idcard/";
     const buildFontURL = (file) => `${baseURL.replace(/\/$/, "")}/${file}`;
     const fontCSS = `
     @font-face {
@@ -1319,7 +1319,7 @@ const App = () => {
     /* @__PURE__ */ u$1("img", { id: "head-src", style: "display: none;", alt: "" }),
     showPopup && /* @__PURE__ */ u$1("div", { className: "input-popup-overlay", onClick: () => setShowPopup(false), children: /* @__PURE__ */ u$1("div", { className: "input-popup", onClick: (e) => e.stopPropagation(), children: [
       /* @__PURE__ */ u$1("h2", { className: "input-popup-title", children: "裁剪/五官位置参考" }),
-      /* @__PURE__ */ u$1("img", { className: "input-popup-image", src: `${"/preact/"}id_img_head_woman.png`, alt: "" }),
+      /* @__PURE__ */ u$1("img", { className: "input-popup-image", src: `${"/idcard/"}id_img_head_woman.png`, alt: "" }),
       /* @__PURE__ */ u$1("p", { className: "input-popup-text", children: "建议使用 400*500 透明背景PNG格式" }),
       /* @__PURE__ */ u$1("button", { className: "button", onClick: () => handleUploadClick(), children: /* @__PURE__ */ u$1("p", { children: "上传" }) })
     ] }) }),
