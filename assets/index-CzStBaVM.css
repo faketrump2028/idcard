@@ -8,11 +8,9 @@
 
 html, body, #app {
     height: 100vh;
-    /*overflow: hidden;*/
     width: 100vw;
     margin: 0;
     padding: 0;
-    /*position: fixed;*/
     background-color: rgb(244, 244, 244);
     -webkit-user-select: none;
     user-select: none;
@@ -215,6 +213,13 @@ input[type="time"] {
 .input-box.period {
     position: relative;
     width: 50%;
+}
+.input-box-button {
+    margin-top: 8px;
+    color: #cccccc;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    cursor: pointer;
 }
 
 .input-box:focus {

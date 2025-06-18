@@ -3,14 +3,27 @@
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0,, maximum-scale=1.0,user-scalable=no,minimal-ui"/>
+	<meta name="description" content="在线身份证高清图片生成器，手动输入或一键自动生成，免费使用。">
 	<link rel="icon" href="/idcard/assets/favicon-DBp-OqJ7.ico" />
-	<title>ID card generator</title>
-  <script type="module" crossorigin src="/idcard/assets/index-CwoQN5du.js"></script>
-  <link rel="stylesheet" crossorigin href="/idcard/assets/index-CdbDHeiV.css">
+	<link rel="canonical" href="https://idcard.kesug.com/" />
+
+	<title>身份证生成器</title>
+
+	<script >
+		if (window.location.search === '?i=1') {
+			const url = new URL(window.location.href);
+			url.search = '';
+			window.history.replaceState({}, '', url.toString());
+		}
+	</script >
+
+  <script type="module" crossorigin src="/idcard/assets/index-DSogrCt2.js"></script>
+  <link rel="stylesheet" crossorigin href="/idcard/assets/index-CzStBaVM.css">
 </head>
 <body>
 
 <div id="app"></div>
+<h1 style="display: none">身份证高清图片在线生成器</h1>
 
 
 </body>
