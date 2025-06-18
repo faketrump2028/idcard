@@ -1300,6 +1300,45 @@ const isValidHanzi = (char) => {
 const countValidHanzi = (text) => Array.from(text).filter(isValidHanzi).length;
 const isValidID = (val) => /^[0-9]{17}[0-9Xx]$/.test(val);
 const App = () => {
+  const loadFontsAndImages = () => {
+    const baseURL = "/idcard/";
+    const buildFontURL = (file) => `${baseURL.replace(/\/$/, "")}/${file}`;
+    const buildImgURL = (file) => `${baseURL.replace(/\/$/, "")}/${file}`;
+    const fontCSS = `
+    @font-face {
+      font-family: "font_name";
+      src: url("${buildFontURL("font_name.ttf")}") format("truetype");
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "font_born";
+      src: url("${buildFontURL("font_born.ttf")}") format("truetype");
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "font_number";
+      src: url("${buildFontURL("font_number.ttf")}") format("truetype");
+      font-display: swap;
+    }
+  `;
+    const style = document.createElement("style");
+    style.innerText = fontCSS;
+    document.head.appendChild(style);
+    const preloadList = [
+      "font_noise.webp",
+      "id_img_back.webp",
+      "id_img_front.webp",
+      "id_img_head_man.webp",
+      "id_img_head_woman.webp"
+    ];
+    preloadList.forEach((file) => {
+      const link = document.createElement("link");
+      link.rel = "preload";
+      link.as = "image";
+      link.href = buildImgURL(file);
+      document.head.appendChild(link);
+    });
+  };
   const [getRandomProfileFn, setGetRandomProfileFn] = d(null);
   const [randomReady, setRandomReady] = d(false);
   const fillRandomInfo = async () => {
@@ -1333,9 +1372,7 @@ const App = () => {
   const [generatedFrontImageUrl, setGeneratedFrontImageUrl] = d(null);
   const [generatedBackImageUrl, setGeneratedBackImageUrl] = d(null);
   const [isShowingBack, setIsShowingBack] = d(false);
-  const [uploadedImageURL, setUploadedImageURL] = d(
-    sessionStorage.getItem("uploadedImageURL") || ""
-  );
+  const [uploadedImageURL, setUploadedImageURL] = d(sessionStorage.getItem("uploadedImageURL") || "");
   y(() => {
     const loadRandomModule = async () => {
       const module = await __vitePreload(() => import('./random-CWtpBvUa.js'),true              ?[]:void 0);
@@ -1387,31 +1424,9 @@ const App = () => {
     };
   }, [isGenerating]);
   y(() => {
-    const baseURL = "/idcard/";
-    const buildFontURL = (file) => `${baseURL.replace(/\/$/, "")}/${file}`;
-    const fontCSS = `
-    @font-face {
-      font-family: "font_name";
-      src: url("${buildFontURL("font_name.ttf")}") format("truetype");
-      font-display: swap;
-    }
-    @font-face {
-      font-family: "font_born";
-      src: url("${buildFontURL("font_born.ttf")}") format("truetype");
-      font-display: swap;
-    }
-    @font-face {
-      font-family: "font_number";
-      src: url("${buildFontURL("font_number.ttf")}") format("truetype");
-      font-display: swap;
-    }
-  `;
-    const style = document.createElement("style");
-    style.innerText = fontCSS;
-    document.head.appendChild(style);
-  }, []);
-  y(() => {
-    __vitePreload(() => import('./random-CWtpBvUa.js'),true              ?[]:void 0);
+    __vitePreload(() => import('./random-CWtpBvUa.js'),true              ?[]:void 0).then(() => {
+      loadFontsAndImages();
+    });
   }, []);
   const handleUploadClick = () => {
     fileInputRef.current.click();
