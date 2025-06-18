@@ -1300,8 +1300,11 @@ const isValidHanzi = (char) => {
 const countValidHanzi = (text) => Array.from(text).filter(isValidHanzi).length;
 const isValidID = (val) => /^[0-9]{17}[0-9Xx]$/.test(val);
 const App = () => {
+  const [getRandomProfileFn, setGetRandomProfileFn] = d(null);
+  const [randomReady, setRandomReady] = d(false);
   const fillRandomInfo = async () => {
     const module = await __vitePreload(() => import('./random-CWtpBvUa.js'),true              ?[]:void 0);
+    if (!getRandomProfileFn) return;
     const data = module.getRandomProfile();
     console.log(data);
     setNameVal(data.name);
@@ -1333,6 +1336,14 @@ const App = () => {
   const [uploadedImageURL, setUploadedImageURL] = d(
     sessionStorage.getItem("uploadedImageURL") || ""
   );
+  y(() => {
+    const loadRandomModule = async () => {
+      const module = await __vitePreload(() => import('./random-CWtpBvUa.js'),true              ?[]:void 0);
+      setGetRandomProfileFn(() => module.getRandomProfile);
+      setRandomReady(true);
+    };
+    loadRandomModule();
+  }, []);
   y(() => {
     const validName = countValidHanzi(nameVal) >= 2;
     const validNation = countValidHanzi(nationVal) >= 1;
@@ -1493,7 +1504,15 @@ const App = () => {
               onInput: (e) => setNationVal(e.target.value)
             }
           ),
-          /* @__PURE__ */ u$1("button", { className: "input-box-make", onClick: fillRandomInfo, children: "随机" })
+          /* @__PURE__ */ u$1(
+            "button",
+            {
+              className: "input-box-make",
+              onClick: fillRandomInfo,
+              disabled: !randomReady,
+              children: "随机"
+            }
+          )
         ] }),
         /* @__PURE__ */ u$1("div", { className: "input-horizon", children: [
           /* @__PURE__ */ u$1(
@@ -1646,7 +1665,7 @@ const App = () => {
               });
             }
             const frontImage = await toJpeg(frontTarget, {
-              quality: 0.9,
+              quality: 1,
               backgroundColor: null,
               pixelRatio: 0.5
             });
@@ -1656,7 +1675,7 @@ const App = () => {
               const backTarget = document.querySelectorAll(".generate-list-wrapper")[1];
               if (backTarget) {
                 backImage = await toJpeg(backTarget, {
-                  quality: 0.9,
+                  quality: 1,
                   backgroundColor: null,
                   pixelRatio: 0.5
                 });
