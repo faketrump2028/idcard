@@ -2,6 +2,9 @@
 👉 <a href="https://idcard.kesug.com/" target="_blank"> idcard.kesug.com</a>  
 👉 <a href="https://faketrump2028.github.io/idcard/" target="_blank"> GitHub Pages </a>
 
+<img width="350" height="413" alt="范冰冰UI-min" src="https://github.com/user-attachments/assets/57067af0-5145-4f61-b662-cb087de6bc4d" />
+
+
 ①身份证正面、背面生成图片保存<br>
 ②手动输入或一键随机生成身份证号码、姓名、民族、住址、签发机关、有效期限<br>
 ③手动选择或自动根据身份证号码第17位提供男、女照片<br>
