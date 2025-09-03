@@ -2,8 +2,7 @@
 👉 <a href="https://idcard.kesug.com/" target="_blank"> idcard.kesug.com</a>  
 👉 <a href="https://faketrump2028.github.io/idcard/" target="_blank"> GitHub Pages </a>
 
-<img width="350" height="413" alt="图层 0" src="https://github.com/user-attachments/assets/294391a3-3dea-4aea-94f7-dc389500d076" />
-
+<img width="2007" height="1236" alt="Group 24-min" src="https://github.com/user-attachments/assets/ba905920-b571-4aa9-9f35-5150b93d222a" />
 
 ①身份证正面、背面生成图片保存<br>
 ②手动输入或一键随机生成身份证号码、姓名、民族、住址、签发机关、有效期限<br>
